@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
                     const token = localStorage.getItem('token');
                     if (!token) return;
                     const config = { headers: { Authorization: `Bearer ${token}` } };
-                    const res = await axios.get('http://localhost:5002/api/chat/requests', config);
+                    const res = await axios.get('https://paynest-backend-ie16.onrender.com/api/chat/requests', config);
                     setRequests(res.data);
                 } catch (err) { console.error(err); }
             };
@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
         try {
             const token = localStorage.getItem('token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.post('http://localhost:5002/api/chat/respond', { requestId, status }, config);
+            await axios.post('https://paynest-backend-ie16.onrender.com/api/chat/respond', { requestId, status }, config);
             setRequests(prev => prev.filter(r => r._id !== requestId));
         } catch (err) { console.error(err); }
     };

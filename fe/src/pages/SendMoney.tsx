@@ -29,7 +29,7 @@ const SendMoney: React.FC = () => {
 
         try {
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.post('http://localhost:5002/api/users/send-money', {
+            await axios.post('https://paynest-backend-ie16.onrender.com/api/users/send-money', {
                 recipientEmail, 
                 amount: parseFloat(amount) 
             }, config);

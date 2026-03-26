@@ -37,7 +37,7 @@ const Chat: React.FC = () => {
             try {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const res = await axios.get('http://localhost:5002/api/chat/users', config);
+                const res = await axios.get('https://paynest-backend-ie16.onrender.com/api/chat/users', config);
                 const mapped = res.data.map((u: any) => ({
                     _id: u._id,
                     name: u.name,
@@ -54,7 +54,7 @@ const Chat: React.FC = () => {
     }, [navigate]);
 
     if (!socket.current) {
-        socket.current = io('http://localhost:5002');
+        socket.current = io('https://paynest-backend-ie16.onrender.com');
     }
 
     useEffect(() => {
@@ -88,7 +88,7 @@ const Chat: React.FC = () => {
             try {
                 const token = localStorage.getItem('token');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const res = await axios.get(`http://localhost:5002/api/chat/messages/${activeConv._id}`, config);
+                const res = await axios.get(`https://paynest-backend-ie16.onrender.com/api/chat/messages/${activeConv._id}`, config);
                 if (isMounted) {
                     setMessages(res.data);
                 }
@@ -156,7 +156,7 @@ const Chat: React.FC = () => {
         try {
             const token = localStorage.getItem('token');
             const config = { headers: { Authorization: `Bearer ${token}` } };
-            await axios.post('http://localhost:5002/api/chat/request', { email: newEmail }, config);
+            await axios.post('https://paynest-backend-ie16.onrender.com/api/chat/request', { email: newEmail }, config);
             setAddMsg('Friend request sent!');
             setNewEmail('');
         } catch (err: any) {

@@ -21,8 +21,8 @@ const Dashboard: React.FC = () => {
 
             try {
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                const userRes = await axios.get('http://localhost:5002/api/users/details', config);
-                const transRes = await axios.get('http://localhost:5002/api/users/transactions', config);
+                const userRes = await axios.get('https://paynest-backend-ie16.onrender.com/api/users/details', config);
+                const transRes = await axios.get('https://paynest-backend-ie16.onrender.com/api/users/transactions', config);
                 
                 setUser(userRes.data);
                 setTransactions(transRes.data);

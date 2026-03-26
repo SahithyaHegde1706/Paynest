@@ -17,7 +17,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         fetchStats();
 
-        const socket = io('http://localhost:5002');
+        const socket = io('https://paynest-backend-ie16.onrender.com');
         socket.on('connect', () => {
             socket.emit('register', 'admin_room');
         });
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('http://localhost:5002/api/admin/stats', {
+            const res = await axios.get('https://paynest-backend-ie16.onrender.com/api/admin/stats', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setStats(res.data);

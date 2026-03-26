@@ -22,7 +22,7 @@ const ReceiveMoney: React.FC = () => {
                 const config = { headers: { Authorization: `Bearer ${token}` } };
                 const userStr = localStorage.getItem('user');
                 const userObj = userStr ? JSON.parse(userStr) : {};
-                const res = await axios.get('http://localhost:5002/api/users/transactions', config);
+                const res = await axios.get('https://paynest-backend-ie16.onrender.com/api/users/transactions', config);
                 // Filter for received only
                 setTransactions(res.data.filter((tx: any) => tx.receiverId?._id === userObj._id || tx.receiverId === userObj._id));
             } catch (err) {

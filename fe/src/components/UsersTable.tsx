@@ -29,7 +29,7 @@ const UsersTable = () => {
             if (minBal) query += `&minBalance=${minBal}`;
             if (maxBal) query += `&maxBalance=${maxBal}`;
             
-            const res = await axios.get(`http://localhost:5002/api/admin/users?${query}`, {
+            const res = await axios.get(`https://paynest-backend-ie16.onrender.com/api/admin/users?${query}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(res.data);
@@ -44,7 +44,7 @@ const UsersTable = () => {
     const toggleBlock = async (id: string) => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.patch(`http://localhost:5002/api/admin/block/${id}`, {}, {
+            const res = await axios.patch(`https://paynest-backend-ie16.onrender.com/api/admin/block/${id}`, {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(users.map(u => u._id === id ? { ...u, isBlocked: res.data.isBlocked } : u));
@@ -57,7 +57,7 @@ const UsersTable = () => {
         if (!window.confirm('Are you sure you want to delete this user?')) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`http://localhost:5002/api/admin/user/${id}`, {
+            await axios.delete(`https://paynest-backend-ie16.onrender.com/api/admin/user/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setUsers(users.filter(u => u._id !== id));
@@ -71,7 +71,7 @@ const UsersTable = () => {
         if (!window.confirm(`Promote/Demote user to ${newRole}?`)) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.patch(`http://localhost:5002/api/admin/role/${id}`, { role: newRole }, {
+            await axios.patch(`https://paynest-backend-ie16.onrender.com/api/admin/role/${id}`, { role: newRole }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchUsers();
@@ -85,7 +85,7 @@ const UsersTable = () => {
         if (!window.confirm(`Are you sure you want to ${action} ${selectedUsers.length} users?`)) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.post(`http://localhost:5002/api/admin/users/bulk`, { userIds: selectedUsers, action }, {
+            await axios.post(`https://paynest-backend-ie16.onrender.com/api/admin/users/bulk`, { userIds: selectedUsers, action }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchUsers();

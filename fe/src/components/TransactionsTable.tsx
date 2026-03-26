@@ -20,7 +20,7 @@ const TransactionsTable = () => {
         setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            let url = `http://localhost:5002/api/admin/transactions?`;
+            let url = `https://paynest-backend-ie16.onrender.com/api/admin/transactions?`;
             if (dateFilter) url += `date=${dateFilter}&`;
             if (userFilter) url += `userId=${userFilter}&`;
             
@@ -37,7 +37,7 @@ const TransactionsTable = () => {
         if (!window.confirm(`Mark transaction as ${status}?`)) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.patch(`http://localhost:5002/api/admin/transaction/${id}/status`, { status }, {
+            await axios.patch(`https://paynest-backend-ie16.onrender.com/api/admin/transaction/${id}/status`, { status }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             fetchTransactions();

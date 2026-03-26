@@ -17,7 +17,7 @@ const Login: React.FC = () => {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:5002/api/auth/login', { email, password });
+            const response = await axios.post('https://paynest-backend-ie16.onrender.com/api/auth/login', { email, password });
             const { token, user } = response.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));

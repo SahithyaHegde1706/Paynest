@@ -19,7 +19,7 @@ const Signup: React.FC = () => {
 
         try {
             console.log('Sending signup request with:', { name, email, password });
-            const response = await axios.post('http://localhost:5002/api/auth/signup', { name, email, password });
+            const response = await axios.post('https://paynest-backend-ie16.onrender.com/api/auth/signup', { name, email, password });
             console.log('Signup successful:', response.data);
             navigate('/login');
         } catch (err: any) {
