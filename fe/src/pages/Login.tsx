@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Wallet, Mail, Lock, LogIn, ArrowRight } from 'lucide-react';
+import { Wallet, Mail, Lock, LogIn } from 'lucide-react';
 import axios from 'axios';
 
-const Login: React.FC = () => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = async (e: React.FormEvent) => {
+    const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setError('');

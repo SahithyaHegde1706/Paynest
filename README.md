@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 # 💳 PayNest – Digital Payment & Real-Time Chat Application
 PayNest is a **Full Stack MERN Application** that combines **secure digital payments** with **real-time communication** in a single platform.
 The project allows users to send money, chat instantly, manage transactions, and provides an advanced admin panel for monitoring and security.
 
 ## 🚀 Features
+=======
+# 💳 PayNest – Full Stack Digital Payment & Chat Platform
+
+PayNest is a full-stack MERN application that combines **digital payments, real-time chat, and admin control systems** into one powerful platform. It simulates a modern fintech ecosystem with secure transactions and live communication.
+
+### Features:-
+>>>>>>> 7a36c04 (fixed build errors)
 
 ### 👤 User Authentication:-
 * Secure Login & Signup

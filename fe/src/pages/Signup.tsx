@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Wallet, Mail, Lock, User, UserPlus, ArrowRight } from 'lucide-react';
+import { Wallet, Mail, Lock, User, UserPlus } from 'lucide-react';
 import axios from 'axios';
 
-const Signup: React.FC = () => {
+const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,7 +12,7 @@ const Signup: React.FC = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const handleSignup = async (e: React.FormEvent) => {
+    const handleSignup = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
         setError('');

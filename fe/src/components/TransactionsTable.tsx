@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Search, Calendar, ArrowUpRight, ArrowDownLeft, AlertTriangle, Check, X, Download } from 'lucide-react';
+import { Search, Calendar, ArrowUpRight, AlertTriangle, Check, X, Download } from 'lucide-react';
 import { format } from 'date-fns';
 
 const TransactionsTable = () => {

@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useRef, FormEvent, ChangeEvent } from 'react';
+import { motion } from 'framer-motion';
 import { io } from 'socket.io-client';
-import { Send, MessageSquare, Phone, Video, MoreVertical, Paperclip, Smile, ChevronLeft, ArrowLeft, UserPlus, X } from 'lucide-react';
+import { Send, MessageSquare, Phone, Video, MoreVertical, Paperclip, Smile, ChevronLeft, UserPlus, X } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import EmojiPicker from 'emoji-picker-react';
+import EmojiPicker, { Theme } from 'emoji-picker-react';
 
-const Chat: React.FC = () => {
+const Chat = () => {
     const [messages, setMessages] = useState<any[]>([]);
     const [input, setInput] = useState('');
     const socket = useRef<any>(null);
@@ -105,7 +105,7 @@ const Chat: React.FC = () => {
         scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
-    const handleSendMessage = (e: React.FormEvent) => {
+    const handleSendMessage = (e: FormEvent) => {
         e.preventDefault();
         if ((!input.trim() && !fileData) || !socket.current || !activeConv) return;
 
@@ -133,7 +133,7 @@ const Chat: React.FC = () => {
         setShowEmojiPicker(false);
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             const reader = new FileReader();
@@ -149,7 +149,7 @@ const Chat: React.FC = () => {
         setInput(prev => prev + emojiObject.emoji);
     };
 
-    const handleAddUser = async (e: React.FormEvent) => {
+    const handleAddUser = async (e: FormEvent) => {
         e.preventDefault();
         setAddMsg('');
         if (!newEmail.trim()) return;
@@ -297,7 +297,7 @@ const Chat: React.FC = () => {
                         <footer className="p-4 md:p-6 glass-card border-t border-white/10 z-10 relative">
                             {showEmojiPicker && (
                                 <div className="absolute bottom-[calc(100%+8px)] right-6 z-50">
-                                    <EmojiPicker onEmojiClick={onEmojiClick} theme="dark" />
+                                    <EmojiPicker onEmojiClick={onEmojiClick} theme={Theme.DARK} />
                                 </div>
                             )}
                             {fileData && (
