@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef, FormEvent, ChangeEvent } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 import { motion } from 'framer-motion';
 import { io } from 'socket.io-client';
 import { Send, MessageSquare, Phone, Video, MoreVertical, Paperclip, Smile, ChevronLeft, UserPlus, X } from 'lucide-react';
